@@ -1,0 +1,306 @@
+---
+import { site } from "../../content/site";
+---
+<section
+    id="areasDeAtuacao"
+    class="bg-white py-20 sm:py-24 lg:py-32"
+>
+    <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+
+        <!-- Cabeçalho -->
+        <div class="mx-auto mb-14 max-w-2xl text-center sm:mb-16">
+
+            <p
+                class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B08D57]"
+            >
+                {site.areasAtuacao.tituloPequeno}
+            </p>
+
+            <h2
+                class="text-3xl font-semibold tracking-tight text-[#3E2A21] sm:text-4xl lg:text-5xl"
+            >
+                {site.areasAtuacao.titulo}
+            </h2>
+
+            <p
+                class="mt-5 text-base leading-7 text-[#5C4033] sm:text-lg"
+            >
+                {site.areasAtuacao.paragrafo}
+            </p>
+
+        </div>
+
+
+        <!-- Cards -->
+        <div
+            class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        >
+
+            {
+                 site.areas.map((area) => (
+                    <article
+                        class="
+                            group
+                            relative
+                            overflow-hidden
+                            border
+                            border-[#E8E1D8]
+                            bg-[#F8F6F2]
+                            p-7
+                            transition-all
+                            duration-300
+                            hover:-translate-y-1
+                            hover:border-[#B08D57]
+                            hover:shadow-xl
+                            sm:p-8
+                        "
+                    >
+
+                        <!-- Número -->
+                        <span
+                            class="
+                                text-sm
+                                font-semibold
+                                tracking-[0.15em]
+                                text-[#B08D57]
+                            "
+                        >
+                            {area.number}
+                        </span>
+
+
+                        <!-- Título -->
+                        <h3
+                            class="
+                                mt-8
+                                text-xl
+                                font-semibold
+                                text-[#3E2A21]
+                                transition-colors
+                                duration-300
+                                group-hover:text-[#B08D57]
+                            "
+                        >
+                            {area.title}
+                        </h3>
+
+
+                        <!-- Descrição -->
+                        <p
+                            class="
+                                mt-4
+                                text-sm
+                                leading-6
+                                text-[#5C4033]
+                            "
+                        >
+                            {area.description}
+                        </p>
+
+
+                        <!-- Link -->
+                        <button
+                            type="button"
+                            class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#3E2A21] transition-colors duration-300 hover:text-[#B08D57]"
+                            data-area-open={area.number}
+                        >
+                            {site.saibaMais}
+
+                            <span
+                                class="
+                                    transition-transform
+                                    duration-300
+                                    group-hover:translate-x-1
+                                "
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+                        </button>
+
+                    </article>
+                ))
+            }
+
+        </div>
+
+    </div>
+
+    <!-- MODAIS -->
+    {
+        site.areas.map((area) => (
+            <div
+                id={`area-modal-${area.number}`}
+                class="fixed inset-0 z-[100] hidden items-center justify-center p-4"
+                aria-hidden="true"
+            >
+
+                <!-- Fundo escuro -->
+                <div
+                    class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                    data-area-close
+                ></div>
+
+
+                <!-- Caixa -->
+                <div
+                    class="relative z-10 w-full max-w-2xl translate-y-4 scale-95 bg-white p-7 opacity-0 shadow-2xl transition-all duration-300 sm:p-10"
+                    data-area-modal-content
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby={`area-title-${area.number}`}
+                >
+
+                    <!-- Fechar -->
+                    <button
+                        type="button"
+                        class="absolute right-5 top-5 flex h-9 w-9 items-center justify-center text-2xl text-[#5C4033] transition-colors hover:text-[#B08D57]"
+                        aria-label="Fechar"
+                        data-area-close
+                    >
+                        ×
+                    </button>
+
+
+                    <!-- Conteúdo -->
+                    <span
+                        class="text-sm font-semibold tracking-[0.15em] text-[#B08D57]"
+                    >
+                        {area.number}
+                    </span>
+
+                    <h3
+                        id={`area-title-${area.number}`}
+                        class="mt-4 pr-10 text-2xl font-semibold text-[#3E2A21] sm:text-3xl"
+                    >
+                        {area.title}
+                    </h3>
+
+                    <div class="my-6 h-px w-16 bg-[#B08D57]"></div>
+
+                    <div class="space-y-4 text-base leading-7 text-[#5C4033]">
+                        {
+                            area.details.split("\n\n").map((paragraph) => (
+                                <p>{paragraph}</p>
+                            ))
+                        }
+                    </div>
+
+
+                    <!-- CTA -->
+                    <a
+                        href={`https://wa.me/${site.social.whatsappNumero}?text=${encodeURIComponent(`Olá, Dra. Ana! Vi o seu site e gostaria de uma orientação especializada sobre o meu caso, relacionado a ${area.title}.`)}`}
+                        class="mt-8 inline-flex items-center bg-[#B08D57] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#C6A66B]"
+                        data-area-close
+                    >
+                        Fale conosco
+                    </a>
+
+                </div>
+
+            </div>
+        ))
+    }
+</section>
+
+<script>
+    const openButtons = document.querySelectorAll("[data-area-open]");
+    const closeButtons = document.querySelectorAll("[data-area-close]");
+
+    function openModal(number: string) {
+        const modal = document.querySelector(
+            `#area-modal-${number}`
+        ) as HTMLElement | null;
+
+        if (!modal) return;
+
+        const content = modal.querySelector(
+            "[data-area-modal-content]"
+        ) as HTMLElement | null;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        modal.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add("overflow-hidden");
+
+        requestAnimationFrame(() => {
+            content?.classList.remove(
+                "translate-y-4",
+                "scale-95",
+                "opacity-0"
+            );
+
+            content?.classList.add(
+                "translate-y-0",
+                "scale-100",
+                "opacity-100"
+            );
+        });
+    }
+
+
+    function closeModal(modal: HTMLElement) {
+        const content = modal.querySelector(
+            "[data-area-modal-content]"
+        ) as HTMLElement | null;
+
+        content?.classList.remove(
+            "translate-y-0",
+            "scale-100",
+            "opacity-100"
+        );
+
+        content?.classList.add(
+            "translate-y-4",
+            "scale-95",
+            "opacity-0"
+        );
+
+        modal.setAttribute("aria-hidden", "true");
+
+        setTimeout(() => {
+            modal.classList.remove("flex");
+            modal.classList.add("hidden");
+
+            document.body.classList.remove("overflow-hidden");
+        }, 300);
+    }
+
+
+    openButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const number = button.getAttribute("data-area-open");
+
+            if (number) {
+                openModal(number);
+            }
+        });
+    });
+
+
+    closeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const modal = button.closest(
+                "[id^='area-modal-']"
+            ) as HTMLElement | null;
+
+            if (modal) {
+                closeModal(modal);
+            }
+        });
+    });
+
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+
+        const modal = document.querySelector(
+            "[id^='area-modal-']:not(.hidden)"
+        ) as HTMLElement | null;
+
+        if (modal) {
+            closeModal(modal);
+        }
+    });
+</script>

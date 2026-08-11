@@ -1,0 +1,263 @@
+---
+import { site } from "../../content/site";
+---
+
+<section
+    id="faq"
+    class="bg-white py-20 sm:py-24 lg:py-32"
+>
+    <div class="mx-auto max-w-4xl px-6 sm:px-8">
+
+        <!-- Cabeçalho -->
+        <div class="mb-12 text-center sm:mb-16">
+
+            <p
+                class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B08D57]"
+            >
+                Perguntas frequentes
+            </p>
+
+            <h2
+                class="text-3xl font-semibold tracking-tight text-[#3E2A21] sm:text-4xl lg:text-5xl"
+            >
+                Ainda ficou com alguma dúvida?
+            </h2>
+
+            <p
+                class="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#5C4033] sm:text-lg"
+            >
+                Reunimos algumas das dúvidas mais comuns para ajudar você
+                a entender como funciona o atendimento jurídico.
+            </p>
+
+        </div>
+
+
+        <!-- FAQ -->
+        <div class="divide-y divide-[#E8E1D8] border-y border-[#E8E1D8]">
+
+            {
+                site.faq.map((item, index) => (
+                    <div data-faq-item>
+
+                        <!-- Pergunta -->
+                        <button
+                            type="button"
+                            class="
+                                flex
+                                w-full
+                                items-center
+                                justify-between
+                                gap-6
+                                py-6
+                                text-left
+                            "
+                            aria-expanded="false"
+                            aria-controls={`faq-answer-${index}`}
+                            data-faq-button
+                        >
+
+                            <span
+                                class="
+                                    text-base
+                                    font-semibold
+                                    text-[#3E2A21]
+                                    transition-colors
+                                    duration-300
+                                    hover:text-[#B08D57]
+                                    sm:text-lg
+                                "
+                            >
+                                {item.questao}
+                            </span>
+
+
+                            <!-- Ícone -->
+                            <span
+                                class="
+                                    flex
+                                    h-8
+                                    w-8
+                                    shrink-0
+                                    items-center
+                                    justify-center
+                                    border
+                                    border-[#B08D57]
+                                    text-xl
+                                    font-light
+                                    text-[#B08D57]
+                                    transition-all
+                                    duration-300
+                                "
+                                data-faq-icon
+                                aria-hidden="true"
+                            >
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <!-- Resposta -->
+                        <div
+                            id={`faq-answer-${index}`}
+                            class="
+                                grid
+                                grid-rows-[0fr]
+                                opacity-0
+                                transition-all
+                                duration-300
+                            "
+                            data-faq-answer
+                        >
+                            <div class="overflow-hidden">
+
+                                <p
+                                    class="
+                                        max-w-3xl
+                                        pb-6
+                                        pr-14
+                                        text-sm
+                                        leading-7
+                                        text-[#5C4033]
+                                        sm:text-base
+                                    "
+                                >
+                                    {item.resposta}
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                ))
+            }
+
+        </div>
+
+    </div>
+</section>
+
+
+<script>
+    const faqButtons = document.querySelectorAll("[data-faq-button]");
+
+    faqButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+
+            const item = button.closest("[data-faq-item]");
+
+            if (!item) return;
+
+            const answer = item.querySelector(
+                "[data-faq-answer]"
+            ) as HTMLElement | null;
+
+            const icon = item.querySelector(
+                "[data-faq-icon]"
+            ) as HTMLElement | null;
+
+            if (!answer || !icon) return;
+
+            const isOpen =
+                button.getAttribute("aria-expanded") === "true";
+
+
+            // Fecha todos os outros
+            faqButtons.forEach((otherButton) => {
+
+                if (otherButton === button) return;
+
+                const otherItem =
+                    otherButton.closest("[data-faq-item]");
+
+                if (!otherItem) return;
+
+                const otherAnswer =
+                    otherItem.querySelector(
+                        "[data-faq-answer]"
+                    ) as HTMLElement | null;
+
+                const otherIcon =
+                    otherItem.querySelector(
+                        "[data-faq-icon]"
+                    ) as HTMLElement | null;
+
+                if (!otherAnswer || !otherIcon) return;
+
+                otherButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                otherAnswer.classList.remove(
+                    "grid-rows-[1fr]",
+                    "opacity-100"
+                );
+
+                otherAnswer.classList.add(
+                    "grid-rows-[0fr]",
+                    "opacity-0"
+                );
+
+                otherIcon.textContent = "+";
+
+                otherIcon.classList.remove(
+                    "rotate-45"
+                );
+
+            });
+
+
+            if (isOpen) {
+
+                button.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                answer.classList.remove(
+                    "grid-rows-[1fr]",
+                    "opacity-100"
+                );
+
+                answer.classList.add(
+                    "grid-rows-[0fr]",
+                    "opacity-0"
+                );
+
+                icon.textContent = "+";
+
+                icon.classList.remove(
+                    "rotate-45"
+                );
+
+            } else {
+
+                button.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+                answer.classList.remove(
+                    "grid-rows-[0fr]",
+                    "opacity-0"
+                );
+
+                answer.classList.add(
+                    "grid-rows-[1fr]",
+                    "opacity-100"
+                );
+
+                icon.textContent = "×";
+
+                icon.classList.add(
+                    "rotate-45"
+                );
+
+            }
+
+        });
+
+    });
+</script>

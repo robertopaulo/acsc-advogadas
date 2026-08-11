@@ -1,3 +1,183 @@
-<footer>
-    © 2026 ACSC Advogadas
+---
+import { site } from "../content/site";
+---
+
+<footer class="bg-[#211711] text-white">
+
+    <div class="mx-auto max-w-7xl px-6 py-14 sm:px-8 lg:px-12 lg:py-16">
+
+        <!-- Colunas -->
+        <div class="grid gap-12 md:grid-cols-3 md:gap-8 lg:gap-16">
+
+            <!-- Coluna 1 — Escritório -->
+            <div>
+
+                <a
+                    href="/"
+                    class="inline-flex items-center"
+                    aria-label="ACSC Advogadas - Página inicial"
+                >
+                    <img
+                        src="/images/logo-3-nobg.png"
+                        alt="ACSC Advogadas"
+                        class="h-24 w-auto"
+                    />
+                </a>
+
+                <p
+                    class="mt-5 max-w-sm text-sm leading-6 text-white/60"
+                >
+                    Advocacia com estratégia, experiência e propósito,
+                    oferecendo atendimento personalizado e orientação
+                    jurídica responsável.
+                </p>
+
+            </div>
+
+
+            <!-- Coluna 2 — Navegação -->
+            <div>
+
+                <h2
+                    class="text-sm font-semibold uppercase tracking-[0.15em] text-[#C6A66B]"
+                >
+                    Navegação
+                </h2>
+
+                <nav class="mt-5 flex flex-col gap-3">
+
+                    <a
+                        href="#sobre"
+                        class="w-fit text-sm text-white/70 transition-colors duration-300 hover:text-[#C6A66B]"
+                    >
+                        {site.menu.sobre}
+                    </a>
+
+                    <a
+                        href="#atuacao"
+                        class="w-fit text-sm text-white/70 transition-colors duration-300 hover:text-[#C6A66B]"
+                    >
+                        {site.menu.areas}
+                    </a>
+
+                    <a
+                        href="#diferenciais"
+                        class="w-fit text-sm text-white/70 transition-colors duration-300 hover:text-[#C6A66B]"
+                    >
+                        {site.menu.diferenciais}
+                    </a>
+
+                    <a
+                        href="#advogadas"
+                        class="w-fit text-sm text-white/70 transition-colors duration-300 hover:text-[#C6A66B]"
+                    >
+                         {site.menu.advogadas}
+                    </a>
+
+                    <a
+                        href="#faq"
+                        class="w-fit text-sm text-white/70 transition-colors duration-300 hover:text-[#C6A66B]"
+                    >
+                        {site.menu.FAQ}
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <!-- Coluna 3 — Contato -->
+            <div>
+
+                <h2
+                    class="text-sm font-semibold uppercase tracking-[0.15em] text-[#C6A66B]"
+                >
+                    {site.faleConosco}
+                </h2>
+
+                <div class="mt-5 space-y-4">
+
+                    <!-- WhatsApp -->
+                    <a
+                        href={`https://wa.me/${site.social.whatsappNumero}?text=${encodeURIComponent(
+                            "Olá! Vi o site da ACSC Advogadas e gostaria de uma orientação sobre o meu caso."
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group flex items-start gap-3"
+                    >
+                        <span
+                            class="mt-0.5 text-[#C6A66B]"
+                            aria-hidden="true"
+                        >
+                            →
+                        </span>
+
+                        <span>
+                            <span
+                                class="block text-sm font-medium text-white transition-colors group-hover:text-[#C6A66B]"
+                            >
+                                WhatsApp
+                            </span>
+
+                            <span
+                                class="mt-1 block text-sm text-white/60"
+                            >
+                                Entre em contato conosco
+                            </span>
+                        </span>
+                    </a>
+
+
+                    <!-- E-mail -->
+                    <a
+                        href={`mailto:${site.email}`}
+                        class="group flex items-start gap-3"
+                    >
+                        <span
+                            class="mt-0.5 text-[#C6A66B]"
+                            aria-hidden="true"
+                        >
+                            →
+                        </span>
+
+                        <span>
+                            <span
+                                class="block text-sm font-medium text-white transition-colors group-hover:text-[#C6A66B]"
+                            >
+                                E-mail
+                            </span>
+
+                            <span
+                                class="mt-1 block text-sm text-white/60"
+                            >
+                                {site.email}
+                            </span>
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Linha inferior -->
+        <div
+            class="mt-14 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between"
+        >
+
+            <p>
+                © {new Date().getFullYear()} {site.name}. Todos os direitos reservados.
+            </p>
+
+            <p>
+                Advocacia • OAB
+            </p>
+
+        </div>
+
+    </div>
+
 </footer>

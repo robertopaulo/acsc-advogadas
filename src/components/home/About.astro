@@ -1,0 +1,72 @@
+---
+import { site } from "../../content/site";
+---
+
+<section
+    id="sobre"
+    class="bg-[#F8F6F2] py-20 sm:py-24 lg:py-32"
+>
+    <div
+        class="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-8 lg:grid-cols-2 lg:gap-20 lg:px-12"
+    >
+
+        <!-- Conteúdo -->
+        <div>
+
+            <!-- Pequeno título -->
+            <p
+                class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B08D57]"
+            >
+                {site.sobre.tituloPequeno}
+            </p>
+
+            <!-- Título -->
+            <h2
+                class="max-w-xl text-3xl font-semibold leading-tight tracking-tight text-[#3E2A21] sm:text-4xl lg:text-5xl"
+            >
+                {site.sobre.titulo}
+            </h2>
+
+            <!-- Linha decorativa -->
+            <div class="my-8 h-px w-16 bg-[#B08D57]"></div>
+
+            <!-- Texto -->
+            <div class="max-w-xl space-y-5 text-base leading-7 text-[#5C4033] sm:text-lg">
+                <p>
+                    {site.sobre.paragrafoUm}
+                </p>
+
+                <p>
+                    {site.sobre.paragrafoDois}
+                </p>
+
+                <p>
+                    {site.sobre.paragrafoTres}
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Imagem -->
+        <div class="relative">
+
+            <!-- Moldura dourada -->
+            <div
+                class="absolute -bottom-4 -left-4 h-full w-full border border-[#B08D57] sm:-bottom-5 sm:-left-5"
+            ></div>
+
+            <div class="relative overflow-hidden">
+                <img
+                    src="/images/hero-3.png"
+                    alt="Advogadas da ACSC"
+                    class="h-auto w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                />
+            </div>
+
+        </div>
+
+    </div>
+</section>

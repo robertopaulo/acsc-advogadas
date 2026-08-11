@@ -1,0 +1,134 @@
+---
+import { site } from "../../content/site";
+---
+
+<section
+    id="advogadas"
+    class="bg-[#F8F6F2] py-20 sm:py-24 lg:py-32"
+>
+    <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+
+        <!-- Cabeçalho -->
+        <div class="mx-auto max-w-2xl text-center">
+
+            <p
+                class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#B08D57]"
+            >
+                {site.apresentacao.tituloPequeno}
+            </p>
+
+            <h2
+                class="text-3xl font-semibold tracking-tight text-[#3E2A21] sm:text-4xl lg:text-5xl"
+            >
+                {site.apresentacao.tituloBranco}
+                <span class="text-[#B08D57]">{site.apresentacao.tituloGold}.</span>
+            </h2>
+
+            <p
+                class="mt-5 text-base leading-7 text-[#5C4033] sm:text-lg"
+            >
+                {site.apresentacao.paragrafo}
+            </p>
+
+        </div>
+
+
+        <!-- Advogadas -->
+        <div
+            class="mx-auto mt-14 grid max-w-5xl gap-10 sm:mt-16 md:grid-cols-2 md:gap-12 lg:mt-20"
+        >
+
+            {
+                site.advogadas.map((advogada) => (
+                    <article class="group">
+
+                        <!-- Foto -->
+                        <div class="relative">
+
+                            <!-- Moldura dourada -->
+                            <div
+                                class="
+                                    absolute
+                                    -bottom-3
+                                    -right-3
+                                    h-full
+                                    w-full
+                                    border
+                                    border-[#B08D57]
+                                    transition-transform
+                                    duration-500
+                                    group-hover:-translate-x-1
+                                    group-hover:-translate-y-1
+                                "
+                            ></div>
+
+                            <!-- Imagem -->
+                            <div class="relative aspect-[4/5] overflow-hidden bg-[#E8E1D8]">
+
+                                <img
+                                    src={advogada.image}
+                                    alt={advogada.name}
+                                    class="
+                                        h-full
+                                        w-full
+                                        object-cover
+                                        transition-transform
+                                        duration-700
+                                        group-hover:scale-105
+                                        object-[65%]
+                                    "
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Informações -->
+                        <div class="pt-8">
+
+                            <h3
+                                class="text-2xl font-semibold text-[#3E2A21]"
+                            >
+                                {advogada.name}
+                            </h3>
+
+                            <div
+                                class="mt-2 flex flex-wrap items-center gap-3 text-sm"
+                            >
+
+                                <span class="font-medium text-[#B08D57]">
+                                    {advogada.role}
+                                </span>
+
+                                <span
+                                    class="h-1 w-1 rounded-full bg-[#B08D57]"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="text-[#5C4033]">
+                                    {advogada.oab}
+                                </span>
+
+                            </div>
+
+                            <div class="my-5 h-px w-12 bg-[#B08D57]"></div>
+
+                            <p
+                                class="max-w-lg text-base leading-7 text-[#5C4033]"
+                            >
+                                {advogada.description}
+                            </p>
+
+                        </div>
+
+                    </article>
+                ))
+            }
+
+        </div>
+
+    </div>
+</section>

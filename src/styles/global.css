@@ -50,3 +50,27 @@ h4{
 font-family:"Cormorant",serif;
 
 }
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}

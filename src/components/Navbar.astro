@@ -17,11 +17,35 @@ import { site } from "../content/site";
                 {site.menu.sobre}
             </a>
 
-            <a href="#areas" class="transition hover:text-white">
+            <a href="#areasDeAtuacao" class="transition hover:text-white">
                 {site.menu.areas}
             </a>
 
-            <a href="#contato" class="transition hover:text-white">
+            <a
+                href="#diferenciais"
+                class="transition-colors duration-300 hover:text-white"
+            >
+                {site.menu.diferenciais}
+            </a>
+
+            <a
+                href="#advogadas"
+                class="transition-colors duration-300 hover:text-white"
+            >
+                As advogadas
+            </a>
+
+            <a
+                href="#faq"
+                class="transition-colors duration-300 hover:text-white"
+            >
+                FAQ
+            </a>
+
+            <a
+                href="#contato"
+                class="transition-colors duration-300 hover:text-white"
+            >
                 {site.menu.contato}
             </a>
         </nav>
@@ -37,19 +61,27 @@ import { site } from "../content/site";
     </div>
 </header>
 <script>
-    const navbar = document.querySelector("#navbar");
+    const navbar = document.querySelector("#navbar") as HTMLElement | null;
 
     const handleScroll = () => {
-        if (!navbar) return;
+    if (!navbar) return;
 
-        if (window.scrollY > 20) {
-            navbar.classList.remove("bg-transparent");
-            navbar.classList.add("bg-black", "shadow-sm");
-        } else {
-            navbar.classList.remove("bg-black", "shadow-sm");
-            navbar.classList.add("bg-transparent");
-        }
-    };
+    const scrollY = window.scrollY;
+
+    // Limita o cálculo entre 0 e 700
+    const progress = Math.min(scrollY / 700, 1);
+
+    // Opacidade começa em 0 e chega a 0.99
+    const opacity = progress * 0.99;
+
+    navbar.style.backgroundColor = `rgba(62, 42, 33, ${opacity})`;
+
+    if (scrollY > 10) {
+        navbar.classList.add("shadow-sm");
+    } else {
+        navbar.classList.remove("shadow-sm");
+    }
+};
 
     window.addEventListener("scroll", handleScroll);
 </script>

@@ -1,0 +1,93 @@
+---
+import { site } from "../../content/site";
+---
+
+<section
+    id="contato"
+    class="relative overflow-hidden bg-[#3E2A21] py-20 sm:py-24 lg:py-28"
+>
+    <!-- Elemento decorativo -->
+    <div
+        class="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full border border-[#B08D57]/20"
+    ></div>
+
+    <div
+        class="pointer-events-none absolute -bottom-40 -left-40 h-96 w-96 rounded-full border border-[#B08D57]/10"
+    ></div>
+
+
+    <div
+        class="relative mx-auto max-w-5xl px-6 text-center sm:px-8"
+    >
+
+        <!-- Eyebrow -->
+        <p
+            class="text-sm font-semibold uppercase tracking-[0.2em] text-[#C6A66B]"
+        >
+            {site.cta.tituloPequeno}
+        </p>
+
+
+        <!-- Título -->
+        <h2
+            class="mx-auto mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl"
+        >
+            {site.cta.titulo}
+        </h2>
+
+
+        <!-- Descrição -->
+        <p
+            class="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/70 sm:text-lg"
+        >
+            {site.cta.paragrafo}
+        </p>
+
+
+        <!-- Botão -->
+        <div class="mt-9">
+
+            <a
+                href={`https://wa.me/${site.social.whatsappNumero}?text=${encodeURIComponent(
+                    "Olá! Vi o site da ACSC Advogadas e gostaria de uma orientação sobre o meu caso."
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="
+                    inline-flex
+                    items-center
+                    justify-center
+                    gap-3
+                    bg-[#B08D57]
+                    px-7
+                    py-3.5
+                    text-sm
+                    font-semibold
+                    text-white
+                    transition-all
+                    duration-300
+                    hover:bg-[#C6A66B]
+                    hover:-translate-y-0.5
+                    hover:shadow-lg
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-[#C6A66B]
+                    focus:ring-offset-2
+                    focus:ring-offset-[#3E2A21]
+                    sm:px-8
+                "
+            >
+                {site.botaoPrimario}
+
+                <span
+                    class="text-lg transition-transform duration-300 hover:translate-x-1"
+                    aria-hidden="true"
+                >
+                    →
+                </span>
+            </a>
+
+        </div>
+
+    </div>
+</section>

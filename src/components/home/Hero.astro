@@ -1,3 +1,7 @@
+---
+import { site } from "../../content/site";
+---
+
 <section id="inicio"
         class="relative min-h-screen bg-cover bg-end bg-no-repeat"
         style="background-image: url('/images/hero-4.png');"
@@ -10,21 +14,19 @@
     <!-- Conteúdo -->
     <div class="relative z-10 mx-auto flex min-h-screen max-w-7xl items-end px-6 lg:px-8">
         <div class="max-w-2xl text-white">
-            <h1 class="text-4xl font-bold  text-[#b58a2d] tracking-tight sm:text-5xl lg:text-6xl">
-                Advocacia com estratégia,
-                experiência e propósito.
+            <h1 class="text-4xl font-bold  text-[#b58a2d] tracking-tight sm:text-5xl lg:text-6xl font-Cormorant animate-fade-up">
+                {site.slogan}
             </h1>
 
-            <p class="mt-6 text-lg text-white/90">
-                Soluções jurídicas personalizadas para proteger
-                seus direitos e seus interesses.
+            <p class="mt-6 text-lg text-white/90 font-Inter animate-fade-up animation-delay-500">
+                {site.subtitulo}
             </p>
 
             <a
                 href="#contato"
-                class="mt-8 inline-block rounded-full bg-[#b58a2d] px-6 py-3 font-semibold text-slate-900 transition hover:bg-[#cfa344]"
+                class="mt-8 mb-8 inline-block rounded-full bg-[#b58a2d] px-6 py-3 font-semibold text-slate-900 transition hover:bg-[#cfa344] animate-fade-up animation-delay-1000"
             >
-                Conheça nosso trabalho
+                {site.botaoPrimario}
             </a>
         </div>
     </div>
