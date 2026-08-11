@@ -2,25 +2,26 @@
 import { site } from "../content/site";
 ---
 
-<header class="border-b border-gray-200 bg-white">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+<header id="navbar" class="fixed top-0 left-0 z-50 w-full border-b border-transparent bg-transparent transition-all duration-300">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
 
         <!-- Logo -->
-        <a href="/" class="text-2xl font-bold tracking-wide">
-            {site.name}
+        <a href="/" id="navbar-logo" class="relative z-50 text-xl font-semibold tracking-wide text-[#b58a2d] transition-colors duration-300 sm:text-2xl"
+        >
+            <img src="/images/logo-3-nobg.png" alt="Logo" class="h-16 w-auto">
         </a>
 
         <!-- Menu -->
-        <nav class="hidden gap-8 md:flex">
-            <a href="#sobre" class="transition hover:text-blue-700">
+        <nav class="items-center gap-10 md:flex text-[#b58a2d] font-bold">
+            <a href="#sobre" class="transition hover:text-white">
                 {site.menu.sobre}
             </a>
 
-            <a href="#areas" class="transition hover:text-blue-700">
+            <a href="#areas" class="transition hover:text-white">
                 {site.menu.areas}
             </a>
 
-            <a href="#contato" class="transition hover:text-blue-700">
+            <a href="#contato" class="transition hover:text-white">
                 {site.menu.contato}
             </a>
         </nav>
@@ -28,10 +29,27 @@ import { site } from "../content/site";
         <!-- Botão -->
         <a
             href="#contato"
-            class="rounded-lg bg-blue-900 px-5 py-3 text-white transition hover:bg-blue-800"
+            class="rounded-lg bg-[#b58a2d] px-5 py-3 text-black transition hover:bg-[#cfa344]"
         >
             {site.botaoPrimario}
         </a>
 
     </div>
 </header>
+<script>
+    const navbar = document.querySelector("#navbar");
+
+    const handleScroll = () => {
+        if (!navbar) return;
+
+        if (window.scrollY > 20) {
+            navbar.classList.remove("bg-transparent");
+            navbar.classList.add("bg-black", "shadow-sm");
+        } else {
+            navbar.classList.remove("bg-black", "shadow-sm");
+            navbar.classList.add("bg-transparent");
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+</script>
